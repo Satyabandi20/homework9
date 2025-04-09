@@ -15,7 +15,7 @@ router = APIRouter()
 
 # Define an endpoint for the login that issues access tokens
 # This endpoint will respond to POST requests at "/token" and returns data matching the Token model
-@router.post("/tokn", response_model=Token)
+@router.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
     # Try to authenticate the user with the provided username and password
     user = authenticate_user(form_data.username, form_data.password)
@@ -39,3 +39,4 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     
     # Return the access token and the token type (Bearer) to the client
     return {"access_token": access_token, "token_type": "bearer"}
+    
